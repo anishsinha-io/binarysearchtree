@@ -1,0 +1,2 @@
+add_library(bst src/bst/bst.c include/bst/bst.h src/linkedlist/linkedlist.c include/linkedlist/linkedlist.h src/vector/vector.c include/vector/vector.h src/queue/queue.c include/queue/queue.h src/stack/stack.c include/stack/stack.h)
+target_include_directories(bst PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)

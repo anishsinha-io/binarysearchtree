@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.20)
+project(binarysearchtree C)
+set(CMAKE_C_STANDARD 99)
+add_subdirectory(bst)
+add_executable(binarysearchtree main.c)
+target_link_libraries(binarysearchtree PUBLIC bst)
