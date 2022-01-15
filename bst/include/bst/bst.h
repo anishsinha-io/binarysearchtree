@@ -16,5 +16,6 @@ void postorder_traversal(TNode *);
 void iterative_preorder_traversal(TNode *);
 void iterative_postorder_traversal(TNode *);
 void iterative_inorder_traversal(TNode *);
+void insert(TNode *, double);
 
 #endif //BINARYSEARCHTREE_BST_H

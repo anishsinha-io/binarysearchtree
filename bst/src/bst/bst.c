@@ -140,3 +140,15 @@ void iterative_inorder_traversal(TNode *r) {
         else it = NULL;
     }
 }
+
+void insert(TNode *r, double val) {
+    TNode *p = r, *prev = NULL;
+    while (p != NULL) {
+        prev = p;
+        if (val < p->val) p = p->left;
+        else p = p->right;
+    }
+    if (r == NULL || prev == NULL) return;
+    else if (val < prev->val) prev->left = new_tnode(val);
+    else prev->right = new_tnode(val);
+}
