@@ -152,3 +152,57 @@ void insert(TNode *r, double val) {
     else if (val < prev->val) prev->left = new_tnode(val);
     else prev->right = new_tnode(val);
 }
+
+static TNode *delete_helper(TNode *r, double val) {
+    TNode *t = r;
+    if (r == NULL) return NULL;
+    if (r->val == val) return r;
+    if (r->val < val) return search(r->right, val);
+    if (r->val > val) return search(r->left, val);
+}
+
+static bool is_leaf(TNode *t) {
+    return t->left == NULL && t->right == NULL;
+}
+
+void delete_node(TNode *r, double val) {
+    TNode *t = r;
+    if (r == NULL) return;
+    while (r != NULL) {
+        if (r->val < val) {
+            t = r;
+            r = r->right;
+        } else if (r->val > val) {
+            t = r;
+            r = r->left;
+        } else break;
+    }
+    if (is_leaf(r)) {
+        if (r->val > t->val) {
+            t->right = NULL;
+        } else {
+            t->left = NULL;
+        }
+        r = NULL;
+        free(r);
+    } else if (r->right == NULL) {
+        t->left = r->left;
+        r = NULL;
+        free(r);
+    } else if (r->left == NULL) {
+        t->right = r->right;
+        r = NULL;
+        free(r);
+    } else {
+        TNode *tmp = r->left;
+        while (tmp->right != NULL) tmp = tmp->right;
+        tmp->right = r->right;
+        if (tmp->val < t->val) {
+            t->left = tmp;
+        } else {
+            t->right = tmp;
+        }
+        r = NULL;
+        free(r);
+    }
+}

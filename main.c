@@ -14,10 +14,7 @@ int main() {
     l_insert(list1, 2);
     l_insert(list1, 7);
     TNode *root = sorted_list_to_bst(list1);
-    insert(root, 0.5);
-    insert(root, 4.5);
-    insert(root, 7.5);
-    insert(root, 9);
-    iterative_inorder_traversal(root);
+    delete_node(root, 8);
+    inorder_traversal(root);
     return 0;
 }
